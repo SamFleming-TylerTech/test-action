@@ -1,0 +1,13 @@
+name: 'Test Action'
+description: 'A simple composite action for testing fork-sync'
+inputs:
+  greeting:
+    description: 'Greeting to display'
+    required: true
+    default: 'Hello from test-action!'
+runs:
+  using: 'composite'
+  steps:
+    - name: Run greeting
+      shell: bash
+      run: echo "${{ inputs.greeting }}"
