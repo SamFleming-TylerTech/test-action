@@ -20,7 +20,7 @@ concurrency:
 jobs:
   scan:
     if: github.event.workflow_run.conclusion == 'success'
-    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/security-scan.yml@feat/composite-action-analysis
+    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/security-scan.yml@main
     with:
       default_branch: main
     secrets: inherit

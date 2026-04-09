@@ -15,7 +15,7 @@ concurrency:
 
 jobs:
   check-tags:
-    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/sync-tags.yml@feat/composite-action-analysis
+    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/sync-tags.yml@main
     with:
       upstream_owner: uprightbass360
       upstream_repo: test-action
