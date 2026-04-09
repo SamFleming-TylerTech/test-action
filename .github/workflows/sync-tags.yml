@@ -1,0 +1,22 @@
+name: Sync Tags
+
+on:
+  schedule:
+    - cron: '0 6 * * 3'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: sync-tags
+  cancel-in-progress: false
+
+jobs:
+  check-tags:
+    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/sync-tags.yml@feat/composite-action-analysis
+    with:
+      upstream_owner: uprightbass360
+      upstream_repo: test-action
+    secrets: inherit

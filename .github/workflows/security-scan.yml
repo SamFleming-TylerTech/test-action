@@ -1,0 +1,26 @@
+name: Security Scan
+
+on:
+  workflow_run:
+    workflows: ["Sync Upstream"]
+    types: [completed]
+
+permissions:
+  contents: read
+  pull-requests: write
+  statuses: write
+  checks: write
+  issues: write
+  security-events: write
+
+concurrency:
+  group: security-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    if: github.event.workflow_run.conclusion == 'success'
+    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/security-scan.yml@feat/composite-action-analysis
+    with:
+      default_branch: main
+    secrets: inherit

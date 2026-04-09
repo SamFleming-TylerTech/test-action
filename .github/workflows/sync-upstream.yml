@@ -1,0 +1,31 @@
+name: Sync Upstream
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force sync even if already up to date'
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+concurrency:
+  group: sync-upstream
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/sync-upstream.yml@feat/composite-action-analysis
+    with:
+      upstream_owner: uprightbass360
+      upstream_repo: test-action
+      default_branch: main
+      force: ${{ inputs.force == true }}
+    secrets: inherit
