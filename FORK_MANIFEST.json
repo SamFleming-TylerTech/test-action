@@ -26,7 +26,14 @@
     "sync_schedule": "Weekly (Monday 06:00 UTC)",
     "tag_check_schedule": "Weekly (Wednesday 06:00 UTC)"
   },
-  "pinned_tags": [],
+  "pinned_tags": [
+    {
+      "tag": "v1.0.0",
+      "fork_sha": "19f5310a66d4f3462934f19bb3271947af7cb935",
+      "pinned_date": "2026-04-09T18:01:17Z",
+      "upstream_source": "uprightbass360/test-action"
+    }
+  ],
   "metadata": {
     "created_date": "2026-04-09T18:01:10Z",
     "created_by": "fork-action.sh",
