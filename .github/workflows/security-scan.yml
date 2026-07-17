@@ -20,7 +20,7 @@ concurrency:
 jobs:
   scan:
     if: github.event.workflow_run.conclusion == 'success'
-    uses: SamFleming-TylerTech/fork-sync-shared-workflow/.github/workflows/security-scan.yml@main
+    uses: tyler-technologies-oss/external-action-shared-workflows/.github/workflows/security-scan.yml@feat/ai-supply-chain-review
     with:
       default_branch: main
     secrets: inherit
