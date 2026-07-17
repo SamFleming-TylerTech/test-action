@@ -24,7 +24,6 @@ jobs:
     uses: tyler-technologies-oss/external-action-shared-workflows/.github/workflows/security-scan.yml@feat/ai-supply-chain-review
     with:
       default_branch: main
-      ai_supplychain_model_id: us.anthropic.claude-sonnet-4-6
     secrets:
       BEDROCK_API_KEY: ${{ secrets.BEDROCK_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
