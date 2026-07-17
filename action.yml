@@ -9,6 +9,10 @@ inputs:
     description: 'Enable verbose output'
     required: false
     default: 'false'
+  format:
+    description: 'Output format: text or json'
+    required: false
+    default: 'text'
 runs:
   using: 'composite'
   steps:
@@ -16,9 +20,17 @@ runs:
       shell: bash
       env:
         VERBOSE: ${{ inputs.verbose }}
+        FORMAT: ${{ inputs.format }}
       run: |
-        if [ "$VERBOSE" = "true" ]; then
+        if [ "$FORMAT" = "json" ]; then
+          echo "{\"greeting\": \"${{ inputs.greeting }}\", \"timestamp\": \"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}"
+        elif [ "$VERBOSE" = "true" ]; then
           echo "[$(date -u)] ${{ inputs.greeting }}"
         else
           echo "${{ inputs.greeting }}"
         fi
+    - name: Validate inputs
+      shell: bash
+      run: |
+        echo "Action completed successfully"
+# Fork-specific modification
