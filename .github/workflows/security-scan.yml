@@ -1,6 +1,7 @@
 name: Security Scan
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Sync Upstream"]
     types: [completed]
@@ -19,7 +20,7 @@ concurrency:
 
 jobs:
   scan:
-    if: github.event.workflow_run.conclusion == 'success'
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
     uses: tyler-technologies-oss/external-action-shared-workflows/.github/workflows/security-scan.yml@feat/ai-supply-chain-review
     with:
       default_branch: main
